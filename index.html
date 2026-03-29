@@ -3,53 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ghost Project | DarkFox Co.</title>
+    <title>Ghost Void | DarkFox Co.</title>
     <style>
-        body { margin: 0; overflow: hidden; background: #000; font-family: 'Courier New', Courier, monospace; }
+        body { margin: 0; overflow: hidden; background: #000; font-family: 'Courier New', Courier, monospace; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
         
-        /* Das Start-Menü */
-        #menu {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, #111 0%, #000 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-            color: white;
-        }
+        #menu { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, #1a1a1a 0%, #000 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 100; color: white; transition: opacity 0.5s; }
+        #menu.hidden { opacity: 0; pointer-events: none; }
 
-        #start-btn {
-            padding: 15px 40px;
-            font-size: 24px;
-            background: transparent;
-            color: #ff0000;
-            border: 2px solid #ff0000;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            transition: 0.3s;
-        }
+        #start-btn { padding: 15px 40px; font-size: 24px; background: transparent; color: #ff0000; border: 2px solid #ff0000; cursor: pointer; text-transform: uppercase; letter-spacing: 5px; transition: 0.3s; margin-top: 20px; }
+        #start-btn:hover { background: #ff0000; color: black; box-shadow: 0 0 20px #ff0000; }
 
-        #start-btn:hover {
-            background: #ff0000;
-            color: black;
-            box-shadow: 0 0 20px #ff0000;
-        }
+        /* Jumpscare Overlay */
+        #jumpscare { position: absolute; width: 100%; height: 100%; background: #000; display: none; z-index: 200; justify-content: center; align-items: center; }
+        #jumpscare img { width: 100%; height: 100%; object-fit: cover; }
 
-        #ui { position: absolute; bottom: 20px; left: 20px; color: #444; pointer-events: none; z-index: 5; }
+        #ui-ingame { position: absolute; bottom: 20px; left: 20px; color: rgba(255,255,255,0.3); pointer-events: none; z-index: 10; font-size: 12px; display: none; }
     </style>
 </head>
 <body>
+
     <div id="menu">
-        <h1 style="letter-spacing: 10px; margin-bottom: 50px;">GHOST VOID</h1>
+        <h1 style="letter-spacing: 15px; margin: 0; text-shadow: 0 0 10px rgba(255,0,0,0.5);">VOID</h1>
+        <p style="color: #444; margin-bottom: 40px;">powered by DarkFox Co.</p>
         <button id="start-btn">START GAME</button>
-        <p style="margin-top: 20px; font-size: 12px; color: #555;">(Nutze Maus oder Controller)</p>
+        <p style="margin-top: 30px; font-size: 12px; color: #666;">[WASD] / [Stick] / [Touch]</p>
     </div>
 
-    <div id="ui">© DarkFox Co. | WASD / Stick to Move</div>
+    <div id="jumpscare">
+        <h1 style="color:red; font-size: 100px;">GEFANGEN</h1>
+    </div>
+
+    <div id="ui-ingame">© DarkFox Co.</div>
 
     <script type="importmap">
         {
