@@ -3,57 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ghost Void | DarkFox Co.</title>
+    <title>Ghost Base | DarkFox Co.</title>
     <style>
-        body { margin: 0; overflow: hidden; background: #000; font-family: 'Courier New', monospace; color: white; user-select: none; }
+        body { margin: 0; overflow: hidden; background: #000; font-family: 'Courier New', monospace; color: white; user-select: none; touch-action: none; }
         
         #menu { 
             position: absolute; width: 100%; height: 100%; 
-            background: #050505; display: flex; flex-direction: column; 
-            justify-content: center; align-items: center; z-index: 100; 
+            background: radial-gradient(circle, #151515 0%, #000 100%); 
+            display: flex; flex-direction: column; justify-content: center; 
+            align-items: center; z-index: 100; 
         }
 
         .btn-group { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; }
         
         button { 
-            padding: 12px 30px; font-size: 18px; background: transparent; 
-            color: #ff0000; border: 1px solid #ff0000; cursor: pointer;
-            transition: 0.2s; text-transform: uppercase;
+            padding: 15px 40px; font-size: 18px; background: rgba(255,0,0,0.1); 
+            color: #ff0000; border: 2px solid #ff0000; cursor: pointer;
+            transition: 0.3s; text-transform: uppercase; letter-spacing: 3px;
         }
 
-        button:hover { background: #ff0000; color: #000; box-shadow: 0 0 15px #ff0000; }
+        button:hover { background: #ff0000; color: #000; box-shadow: 0 0 25px #ff0000; }
 
-        /* Mobile Joysticks */
         #touch-controls { 
-            position: absolute; bottom: 30px; width: 100%; 
+            position: absolute; bottom: 40px; width: 100%; 
             display: none; justify-content: space-between; padding: 0 50px; 
             box-sizing: border-box; z-index: 50; pointer-events: none;
         }
         .joystick { 
-            width: 120px; height: 120px; background: rgba(255,255,255,0.1); 
-            border-radius: 50%; position: relative; pointer-events: auto;
+            width: 100px; height: 100px; background: rgba(255,255,255,0.05); 
+            border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; 
+            position: relative; pointer-events: auto;
         }
         .knob { 
-            width: 50px; height: 50px; background: rgba(255,0,0,0.5); 
-            border-radius: 50%; position: absolute; left: 35px; top: 35px; 
+            width: 40px; height: 40px; background: rgba(255,0,0,0.4); 
+            border-radius: 50%; position: absolute; left: 30px; top: 30px; 
         }
 
         #jumpscare { 
             position: absolute; width: 100%; height: 100%; background: #000; 
             display: none; z-index: 200; justify-content: center; align-items: center; 
         }
+        
+        #loading-screen { position: absolute; bottom: 20px; color: #444; font-size: 12px; }
     </style>
 </head>
 <body>
 
     <div id="menu">
-        <h1 style="letter-spacing: 10px; color: #ff0000;">VOID ENGINE</h1>
-        <p style="color: #444;">Select your Input Method:</p>
+        <h1 style="letter-spacing: 15px; color: #ff0000; margin: 0;">Ghost Base</h1>
+        <p style="color: #444; margin-bottom: 20px;">by DarkFox Co.</p>
+        
         <div class="btn-group">
-            <button onclick="startGame('pc')">Mouse & Keyboard</button>
-            <button onclick="startGame('touch')">Touch (Mobile)</button>
-            <button onclick="startGame('pad')">Controller</button>
+            <button id="btn-pc">Mouse & Keyboard</button>
+            <button id="btn-touch">Touch (Mobile)</button>
+            <button id="btn-pad">Controller</button>
         </div>
+        <div id="loading-screen">Warte auf Assets...</div>
     </div>
 
     <div id="touch-controls">
@@ -61,7 +66,7 @@
         <div id="look-joy" class="joystick"><div class="knob"></div></div>
     </div>
 
-    <div id="jumpscare"><h1 style="color:red; font-size: 10vw;">YOU ARE DEAD</h1></div>
+    <div id="jumpscare"><h1 style="color:red; font-size: 10vw;">VOID TAKES YOU</h1></div>
 
     <script type="importmap">
         { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/" } }
