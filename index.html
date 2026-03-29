@@ -5,15 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ghost Project | DarkFox Co.</title>
     <style>
-        body { margin: 0; overflow: hidden; background: #000; font-family: sans-serif; }
-        #joystick-container { position: absolute; bottom: 20px; left: 20px; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%; display: none; touch-action: none; }
-        #joystick-knob { position: absolute; width: 50px; height: 50px; background: rgba(255,255,255,0.3); border-radius: 50%; left: 50px; top: 50px; }
-        #ui { position: absolute; top: 10px; left: 10px; color: white; pointer-events: none; }
+        body { margin: 0; overflow: hidden; background: #000; font-family: 'Courier New', Courier, monospace; }
+        
+        /* Das Start-Menü */
+        #menu {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #111 0%, #000 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            color: white;
+        }
+
+        #start-btn {
+            padding: 15px 40px;
+            font-size: 24px;
+            background: transparent;
+            color: #ff0000;
+            border: 2px solid #ff0000;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            transition: 0.3s;
+        }
+
+        #start-btn:hover {
+            background: #ff0000;
+            color: black;
+            box-shadow: 0 0 20px #ff0000;
+        }
+
+        #ui { position: absolute; bottom: 20px; left: 20px; color: #444; pointer-events: none; z-index: 5; }
     </style>
 </head>
 <body>
-    <div id="ui">Verbinde einen Controller oder nutze WASD / Touch</div>
-    <div id="joystick-container"><div id="joystick-knob"></div></div>
+    <div id="menu">
+        <h1 style="letter-spacing: 10px; margin-bottom: 50px;">GHOST VOID</h1>
+        <button id="start-btn">START GAME</button>
+        <p style="margin-top: 20px; font-size: 12px; color: #555;">(Nutze Maus oder Controller)</p>
+    </div>
+
+    <div id="ui">© DarkFox Co. | WASD / Stick to Move</div>
 
     <script type="importmap">
         {
